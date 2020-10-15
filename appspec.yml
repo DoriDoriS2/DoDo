@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+  - source:  /
+    destination: /home/dodo/build/
+
+permissions:
+  - object: /
+    pattern: "**"
+    owner: dodo
+    group: dodo
+
+hooks:
+  BeforeInstall:
+    - location: deploy-before.sh
+      runas: dodo
+  ApplicationStart:
+    - location: deploy.sh
+      runas: dodo
